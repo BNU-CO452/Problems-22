@@ -22,7 +22,9 @@ public class MarioWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(MAXN_COLUMNS, MAXN_ROWS, TILE_SIZE); 
-        DrawPath();
+        
+        drawPath();
+        drawPyramids(8);
     }
     
     /**
@@ -30,7 +32,7 @@ public class MarioWorld extends World
      * 2 tiles high and goes right across the whole widh of
      * the screen.
      */
-    private void DrawPath()
+    private void drawPath()
     {
         int yStart = MAXN_ROWS - 1; // 19
         int yEnd = MAXN_ROWS - 2; // 18
@@ -50,6 +52,12 @@ public class MarioWorld extends World
      */
     private void drawPyramids(int height)
     {
+        int yStart = MAXN_ROWS - 3;
+        int xStart = MAXN_COLUMNS - (height * 2) - 2;
         
+        int x = xStart; int y = yStart;
+        
+        Brick brick = new Brick();
+        addObject(brick, x, y);
     }
 }
