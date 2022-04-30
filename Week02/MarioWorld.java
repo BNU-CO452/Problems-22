@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.lang.*;
 
 /**
  * A new version of the Mario Game which just contains
@@ -24,7 +25,11 @@ public class MarioWorld extends World
         super(MAXN_COLUMNS, MAXN_ROWS, TILE_SIZE); 
         
         drawPath();
-        drawPyramids(8);
+        
+        String reply = Greenfoot.ask("Enter the pyramid height (1-8) > ");
+        int height = Integer.parseInt(reply);
+        
+        drawPyramids(height);
     }
     
     /**
@@ -53,11 +58,27 @@ public class MarioWorld extends World
     private void drawPyramids(int height)
     {
         int yStart = MAXN_ROWS - 3;
-        int xStart = MAXN_COLUMNS - (height * 2) - 2;
+        int yEnd = yStart - height;
         
-        int x = xStart; int y = yStart;
+        int xStart1 = (MAXN_COLUMNS - ((height * 2) + 2))/2;
+        int xStart2 = xStart1 + height + 2;
         
-        Brick brick = new Brick();
-        addObject(brick, x, y);
+        for(int y = yStart; y > yEnd; y--)
+        {
+            for(int x = xStart1; x < (xStart1 + height); x++)
+            {
+                Brick brick = new Brick();
+                addObject(brick, x, y);
+            }
+            
+            for(int x = xStart2 ; x < (xStart2 + height); x++)
+            {
+                Brick brick = new Brick();
+                addObject(brick, x, y);
+            }
+
+            height--;
+            xStart1++;
+        }
     }
 }
