@@ -19,4 +19,11 @@ The screen is composed of 24 tiles across and 20 tiles down.  Each tile can be p
 far across it is, and how far down it is.  Thus the tile (0, 0) is in the top left hand corner, and
 the tile (23,19) is in the bottom right hand corner of the screen.
 
-Each tile is 30 pixels across and 30 pixels down. 
+Each tile is 30 pixels across and 30 pixels down.  The tiles that are used to create the pyramid are
+called Block.  To add a new block to the screen uses code as shown below:-
+~~~java
+Block Block = new Block();
+addObject(Block, x, y);
+~~~
+
+Where x is how many tiles across, and y is how many tiles down is wanted.
