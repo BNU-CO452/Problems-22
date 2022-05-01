@@ -6,7 +6,7 @@ In this problem we need to complete the createPyramid() method such that the met
 a Pyramid composed of blocks, each block is exactly the same size as a single tile.  The method
 should be able to draw pyramids of different sizes between one block high and 8 blocks high.
 
-The example below is of size = 3, so has three blocks at the base, and is 3 blocks at its highes
+The example pyramid below is of size = 3, so has three blocks at the base, and is 3 blocks at its highest
 point.  The two halves of the pyramid are separated by 2 tiles, so that Mario has to jump
 over the gap in the final game.
 
