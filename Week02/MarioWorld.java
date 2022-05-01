@@ -12,7 +12,10 @@ public class MarioWorld extends World
 {
     public static final int MAXN_COLUMNS = 24;
     public static final int MAXN_ROWS = 20;
-    public static final int TILE_SIZE = 30;
+    public static final int TILE_SIZE = 30; // pixels
+    
+    private int pyramidHeight;
+    private Mario mario;
     
     /**
      * Setup the world with MAXN_COLUMNS x MAXN_ROWS
@@ -21,15 +24,16 @@ public class MarioWorld extends World
      */
     public MarioWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        // Create a new world with 24 x 20 tiles of 30 pixels each
+        
         super(MAXN_COLUMNS, MAXN_ROWS, TILE_SIZE); 
         
         drawPath();
         
-        String reply = Greenfoot.ask("Enter the pyramid height (1-8) > ");
-        int height = Integer.parseInt(reply);
+        mario = new Mario();
+        addObject(mario, 1, 17);
         
-        drawPyramids(height);
+        createPyramid();
     }
     
     /**
@@ -46,39 +50,61 @@ public class MarioWorld extends World
         {
             for(int x = 0; x < MAXN_COLUMNS; x++)
             {
-                Brick brick = new Brick();
-                addObject(brick, x, y);
+                Block Block = new Block();
+                addObject(Block, x, y);
             }
         }
     }
     
-    /**
-     * Draw a pyramid in the middle of the path
-     */
-    private void drawPyramids(int height)
+    private int getPyramidHeight()
     {
-        int yStart = MAXN_ROWS - 3;
-        int yEnd = yStart - height;
+        String reply;
+        int height = 0;
+        boolean isValid = false;
+
+        while(!isValid)
+        {
+            reply = Greenfoot.ask("Enter the pyramid height (1-8) > ");
+            height = Integer.parseInt(reply); 
+            
+            if((height >= 1) && (height <= 8))
+            {
+                isValid = true;
+            }
+        }
+
+        return height;
+    } 
+    
+    public void createPyramid()
+    {
+        pyramidHeight = getPyramidHeight();
         
-        int xStart1 = (MAXN_COLUMNS - ((height * 2) + 2))/2;
-        int xStart2 = xStart1 + height + 2;
+        int yStart = MAXN_ROWS - 3;
+        int yEnd = yStart - pyramidHeight;
+        
+        int xStart1 = (MAXN_COLUMNS - ((pyramidHeight * 2) + 2))/2;
+        int xStart2 = xStart1 + pyramidHeight + 2;
+        
+        int width = pyramidHeight;
         
         for(int y = yStart; y > yEnd; y--)
         {
-            for(int x = xStart1; x < (xStart1 + height); x++)
+            for(int x = xStart1; x < (xStart1 + width); x++)
             {
-                Brick brick = new Brick();
-                addObject(brick, x, y);
+                Block Block = new Block();
+                addObject(Block, x, y);
             }
             
-            for(int x = xStart2 ; x < (xStart2 + height); x++)
+            for(int x = xStart2 ; x < (xStart2 + width); x++)
             {
-                Brick brick = new Brick();
-                addObject(brick, x, y);
+                Block Block = new Block();
+                addObject(Block, x, y);
             }
 
-            height--;
+            width--;
             xStart1++;
         }
     }
+    
 }
