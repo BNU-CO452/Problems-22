@@ -2,6 +2,8 @@
 This problem is based on a 2D platform game called Mario, where Mario has to move from left to
 right, climbing up structures and jumping over gaps as needed.
 
+![Super Mario Bros](https://github.com/BNU-CO452/Problems-22/blob/main/Week02/images/super%20mario%2001.png)
+
 In this problem we need to complete the createPyramid() method such that the method can draw
 a Pyramid composed of blocks, each block is exactly the same size as a single tile.  The method
 should be able to draw pyramids of different sizes between one block high and 8 blocks high.
