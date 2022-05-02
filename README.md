@@ -37,6 +37,6 @@ You can use the Greenfoot ask() method to aks for a string whcih can then be con
 to an integer.
 
 ~~~java
-    String reply = Greenfoot.ask("Enter the pyramid height (1-8) > ");
-    int height = Integer.parseInt(reply); 
+String reply = Greenfoot.ask("Enter the pyramid height (1-8) > ");
+int height = Integer.parseInt(reply); 
 ~~~
