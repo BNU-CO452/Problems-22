@@ -33,4 +33,10 @@ Where x is how many tiles across, and y is how many tiles down is wanted.
 2. The program should ask again if a number less than 1 or more than 8 is entered
 3. The program should then draw a pyramid of the right size, and with a 2 block gap in the middle
 
+You can use the Greenfoot ask() method to aks for a string whcih can then be converted
+to an integer.
 
+~~~java
+    String reply = Greenfoot.ask("Enter the pyramid height (1-8) > ");
+    int height = Integer.parseInt(reply); 
+~~~
