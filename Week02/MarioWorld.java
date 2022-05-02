@@ -14,7 +14,6 @@ public class MarioWorld extends World
     public static final int MAXN_ROWS = 20;
     public static final int TILE_SIZE = 30; // pixels
     
-    private int pyramidHeight;
     private Mario mario;
     
     /**
@@ -78,7 +77,7 @@ public class MarioWorld extends World
     
     public void createPyramid()
     {
-        pyramidHeight = getPyramidHeight();
+        int pyramidHeight = getPyramidHeight();
         
         int yStart = MAXN_ROWS - 3;
         int yEnd = yStart - pyramidHeight;
