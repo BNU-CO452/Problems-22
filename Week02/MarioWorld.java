@@ -3,7 +3,7 @@ import java.lang.*;
 
 /**
  * A new version of the Mario Game which just contains
- * a platform for Mario to walk left to right.
+ * a platform for Mario to walk left to right and a Pyramid
  * 
  * @author Derek Peacock 
  * @version 1.0
@@ -55,37 +55,47 @@ public class MarioWorld extends World
         }
     }
     
-    private int getPyramidHeight()
+    /**
+     * Ask the user to enter the size of the pyramid in
+     * blocks between 1 to 8 inclusive
+     */
+    private int getPyramidSize()
     {
         String reply;
-        int height = 0;
+        int size = 0;
         boolean isValid = false;
 
         while(!isValid)
         {
-            reply = Greenfoot.ask("Enter the pyramid height (1-8) > ");
-            height = Integer.parseInt(reply); 
+            reply = Greenfoot.ask("Enter the pyramid size (1-8) > ");
+            size = Integer.parseInt(reply); 
             
-            if((height >= 1) && (height <= 8))
+            if((size >= 1) && (size <= 8))
             {
                 isValid = true;
             }
         }
 
-        return height;
+        return size;
     } 
     
+    
+    /**
+     * Build a pyramid of blocks.  The pyramid base is twice
+     * the size, and the pyramid is size blocks high.
+     * There is a gap of 2 blocks in the centre
+     */
     public void createPyramid()
     {
-        int pyramidHeight = getPyramidHeight();
+        int pyramidSize = getPyramidSize();
         
         int yStart = MAXN_ROWS - 3;
-        int yEnd = yStart - pyramidHeight;
+        int yEnd = yStart - pyramidSize;
         
-        int xStart1 = (MAXN_COLUMNS - ((pyramidHeight * 2) + 2))/2;
-        int xStart2 = xStart1 + pyramidHeight + 2;
+        int xStart1 = (MAXN_COLUMNS - ((pyramidSize * 2) + 2))/2;
+        int xStart2 = xStart1 + pyramidSize + 2;
         
-        int width = pyramidHeight;
+        int width = pyramidSize;
         
         for(int y = yStart; y > yEnd; y--)
         {
