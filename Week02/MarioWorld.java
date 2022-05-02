@@ -32,7 +32,7 @@ public class MarioWorld extends World
         mario = new Mario();
         addObject(mario, 1, 17);
         
-        createPyramid();
+        buildPyramid();
     }
     
     /**
@@ -85,7 +85,7 @@ public class MarioWorld extends World
      * the size, and the pyramid is size blocks high.
      * There is a gap of 2 blocks in the centre
      */
-    public void createPyramid()
+    public void buildPyramid()
     {
         int pyramidSize = getPyramidSize();
         

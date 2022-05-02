@@ -9,4 +9,4 @@ PURPOSE OF PROJECT: A starting point for students to complete
 VERSION or DATE: 02/05/2022
 HOW TO START THIS PROJECT: Just reset the program
 AUTHORS: Derek Peacock
-USER INSTRUCTIONS:
+USER INSTRUCTIONS: Enter the size of the pyramid
