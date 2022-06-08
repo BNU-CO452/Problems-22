@@ -14,46 +14,15 @@ public class Lobster extends Actor
     private Random generator = new Random();
     
     /**
-     * Act - do whatever the Lobster wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * This method looks to see if the crab is within a certain
+     * distances and if so turns in that direction.  If not within
+     * range the lobster makes a move in a random direction.
+     * If the lobster touches the crab, the game ends.
      */
     public void act()
     {
         // Add your action code here.
         move(speed);
-        int number = generator.nextInt(200);
-        
-        if(number < 20)
-        {
-            List<Crab> crabs = getObjectsInRange(300, Crab.class);
-            
-            if(crabs.size() > 0)
-            {
-                Crab crab = crabs.get(0);
-                turnTowards(crab.getX(), crab.getY());
-            }
-            else
-            {
-                if(number < 10)
-                    turn(-17);
-                else
-                    turn(17);
-            }
-        }
-        
-        if(isAtEdge())
-            turn(30);
-
-        if(isTouching(Crab.class))
-        {
-            removeTouching(Crab.class);
-            Greenfoot.playSound("au.wav");
-            CrabWorld world = (CrabWorld)getWorld();
-            
-            speed = 0;
-            world.endGame();
-        }
-        
     }
     
 }

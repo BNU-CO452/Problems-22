@@ -30,74 +30,30 @@ public class Crab extends Actor
     }
     
     /**
-     * Act - do whatever the MovingSprite wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * This method allows the user to move the crab so that when
+     * it collides with a worm the worm is removed and the score
+     * is increase
      */
     public void act()
     {
-        move4Ways();
-        
-        if(isTouching(Worm.class))
-        {
-            removeTouching(Worm.class);
-            Greenfoot.playSound("slurp.wav");
-    
-            world = (CrabWorld)getWorld();
-            world.score();
-        }
-    }
-    
-    public void moveAndTurn()
-    {
-        int x = getX(); int y = getY();
-        int halfWidth = width / 2;
-        
-        if(Greenfoot.isKeyDown("left"))
-        {
-            turn(-turnAngle);
-        }
-        
-        if(Greenfoot.isKeyDown("right"))
-        {
-            turn(turnAngle);
-        }  
-        
-        move(speed);
+        move4Ways();  // or moveAndTurn
     }
     
     /**
-     * This method moves the paddle around in four directions
-     * left, right, up and down using coordinate positions.  
+     * This method rotates the worm a small amount to the
+     * left or to the right, and then the worm moves in that
+     * direction
+     */
+    public void moveAndTurn()
+    {
+    }
+    
+    /**
+     * This method moves the crab around in four directions
+     * left, right, up and down using coordinate positions. 
+     * It must not move off the screen.
      */
     public void move4Ways()
     {
-        int x = getX(); int y = getY();
-        int halfWidth = width / 2;
-        
-        if(Greenfoot.isKeyDown("left") && x > halfWidth)
-        {
-            setRotation(270);
-            x -= speed;
-        }
-        
-        if(Greenfoot.isKeyDown("right") && !isAtEdge())
-        {
-            setRotation(90);
-            x += speed;
-        }        
-        
-        if(Greenfoot.isKeyDown("down") && !isAtEdge())
-        {
-            setRotation(180);
-            y += speed;
-        } 
-        
-        if(Greenfoot.isKeyDown("up") && y > speed)
-        {
-            setRotation(0);
-            y -= speed;
-        }
-        
-        setLocation(x, y);
     }
 }
