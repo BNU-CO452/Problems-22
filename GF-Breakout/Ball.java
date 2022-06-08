@@ -27,37 +27,15 @@ public class Ball extends ShapeSprite
     }
     
     /**
-     * Act - do whatever the Ball wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * if the ball has hit the edge of the world, or
+     * has hit the paddle or a brick then reverse direction
+     * of the ball and remove any brick that has been hit
      */
     public void act()
     {
         game = (GameWorld)getWorld();
         
         int x = getX(); int y = getY();
-        
-        if(x >= game.getWidth() - width) 
-        {
-            dx = -speed; 
-        }
-        
-        if(y >= game.getHeight() - height)
-        {
-            dy = -speed;
-        }
-        
-        if(x <= 0)
-        {
-            dx = 0;
-            dy = 0;
-            
-            game.endGame(false);
-        }
-        
-        if(y <= 0)
-        {
-            dy = speed;
-        }
         
         checkCollisions();
         
@@ -66,20 +44,5 @@ public class Ball extends ShapeSprite
     
     private void checkCollisions()
     {
-        if(getOneIntersectingObject(Paddle.class) != null)
-        {
-            dx = speed;
-            Greenfoot.playSound("pong.wav");
-            return;
-        }
-        
-        if(getOneIntersectingObject(Brick.class) != null)
-        {
-            removeTouching(Brick.class);
-            game.increaseScore();
-            Greenfoot.playSound("pong.wav");
-            
-            dx = -dx;
-        }
     }
 }

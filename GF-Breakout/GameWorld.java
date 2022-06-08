@@ -47,17 +47,6 @@ public class GameWorld extends World
     
     private void setupBricks()
     {
-        int x = 500; int y = 50;
-        
-        for(int count = 0; count < 7; count++)
-        {
-            
-            Brick brick = new Brick(20, 40);
-            brick.setColor(Color.GRAY);
-            addObject(brick, x, y);
-            
-            y = y + 50;
-        }
     }
     
     public void increaseScore()
