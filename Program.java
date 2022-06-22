@@ -3,7 +3,7 @@ public class Program
     public static final String CONSOLE_CLEAR = "\033[H\033[2J";
     public static void main(String[] args)
     {
-        System.out.println(ConsoleColours.ANSI_BG_GREEN);77
+        System.out.println(ConsoleColours.ANSI_BG_GREEN);
         System.out.println(ConsoleColours.ANSI_BRIGHT_YELLOW);
         System.out.println(CONSOLE_CLEAR);
 
