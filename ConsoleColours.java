@@ -6,6 +6,7 @@
  */
 public class ConsoleColours
 {
+    public static final String CONSOLE_CLEAR = "\033[H\033[2J";    
     public static final String ANSI_RESET  = "\u001B[0m";
 
     public static final String ANSI_BLACK  = "\u001B[30m";
